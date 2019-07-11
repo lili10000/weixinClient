@@ -1,0 +1,39 @@
+<!--index.wxml-->
+
+<view class="row">
+  <date-picker bindonselectdate="handleSelecteDate" />
+</view>
+<view class="dateInfo">
+  <text>查询日期： {{date}}</text>
+</view>
+<view>
+    <button bindtap='submit' size="mini" type="primary" style="height:90rpx; width: 40%; display:flex; justify-content: center;align-items:center;">查询数据</button>
+</view>
+<view class='history-table-wrap'>
+    <view class="table">
+      <view class="tr" wx:if='{{detail !=""}}'>
+          <view class="th th1">时间</view>
+          <view class="th th2">场次</view>
+          <view class="th th3">订单数</view>
+          <view class="th th4">销售数</view>
+          <view class="th th5">销售金额</view>
+          <view class="th th6">实收金额</view>
+      </view>
+      <view class="tr" wx:for="{{detail}}"wx:for-item='item'>
+          <view class="td td1">{{item.time}}</view>
+          <view class="td td2">{{item.addr}}</view>
+          <view class="td td3">{{item.orderCount}}</view>
+          <view class="td td4">{{item.sellCount}}</view>
+          <view class="td td5">{{item.moneyPrice}}</view>
+          <view class="td td6">{{item.moneyRecv}}</view>
+      </view>
+      <view class="tr" wx:if='{{retnInfo !=""}}'>
+          <view class="th th1">{{date}}</view>
+          <view class="th th2">合计</view>
+          <view class="th th3">{{retnInfo.orderCount}}</view>
+          <view class="th th4">{{retnInfo.sellCount}}</view>
+          <view class="th th5">{{retnInfo.moneyPrice}}</view>
+          <view class="th th6">{{retnInfo.moneyPrice}}</view>
+      </view>
+    </view>
+ </view>
